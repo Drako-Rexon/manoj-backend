@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGO_URL);
+const connectToMongo = () => {
+    mongoose.connect(process.env.MONGO_URL);
+}
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -26,7 +28,7 @@ const userSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: [true,'Please add last name'],
+        required: [true, 'Please add last name'],
         trim: true,
         maxLength: 50
     }
@@ -53,10 +55,11 @@ const movieSchema = new mongoose.Schema({
 // mongoose.model('Account', accountSchema):
 //  This creates a model named Account using the accountSchema. Mongoose will look for a collection named accounts in the database.
 
-const Movie = mongoose.model('Movie', movieSchema);  
+const Movie = mongoose.model('Movie', movieSchema);
 const User = mongoose.model("User", userSchema);
 
 module.exports = {
-	User,
-    Movie
+    User,
+    Movie,
+    connectToMongo
 };
