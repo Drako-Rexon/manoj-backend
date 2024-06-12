@@ -10,6 +10,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/', (req, res) => {
+  res.status(200).json({
+    message: "Welcome to the API"
+  });
+});
+
 app.use("/api/v1", mainRouter);
 
 
