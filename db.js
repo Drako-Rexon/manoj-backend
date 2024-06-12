@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://manoj:manoj2024@cluster0.ccpxis8.mongodb.net/box_office");
+mongoose.connect(process.env.MONGO_URL);
 
 const userSchema = new mongoose.Schema({
     username: {
